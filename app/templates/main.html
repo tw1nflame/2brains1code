@@ -1,0 +1,28 @@
+{%extends "common.html"%}
+
+{% block head %}
+
+    <title>Главная</title>
+    <script src="static/js/sentiment.js"></script>
+{%endblock%}
+
+
+{%block content%}
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Анализ окраски</h1>
+    <p class="text-gray-600 mb-6">Введите текст, чтобы узнать его эмоциональную окраску</p>
+
+    <textarea id="textInput" 
+            class="w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            rows="4" 
+            placeholder="Введите текст..."></textarea>
+
+    <button onclick="analyzeSentiment()"
+            class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-300">
+        Проанализировать
+    </button>
+
+    <div id="result" class="mt-6">
+        <!-- Результат будет отображаться здесь -->
+    </div>
+{%endblock%}
