@@ -14,6 +14,10 @@ def data_analyze(request: Request):
     return templates.TemplateResponse("data_analyze.html", {'request': request})
 
 
+@router.get("/markup", summary='return template')
+def data_analyze(request: Request):
+    return templates.TemplateResponse("markup.html", {'request': request})
+
 RESULTS_DIR = "results"
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
@@ -23,6 +27,9 @@ def process_with_model(df: pd.DataFrame) -> pd.DataFrame:
     df["label"] = ["positive" if i % 2 == 0 else "negative" for i in range(len(df))]
     df["confidence"] = [round(0.5 + 0.5 * (i % 2), 2) for i in range(len(df))]
     return df
+
+
+# @roiter.post("")
 
 
 @router.post("/upload/")

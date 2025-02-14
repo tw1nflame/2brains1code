@@ -6,7 +6,7 @@ from data_analyze.routes import router as data_analyze_router
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=r"D:\Work\AI Learning lab\2brains1code\app\static"), name="static")
 
 
 app.include_router(
