@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from sentiment.routes import router as sentiment_router
 from data_analyze.routes import router as data_analyze_router
-
+from markup.routes import router as markup_router
 
 app = FastAPI()
 
@@ -17,4 +17,9 @@ app.include_router(
 app.include_router(
     data_analyze_router,
     tags=['data_analyze']
+)
+
+app.include_router(
+    markup_router,
+    tags=['markup_router']
 )
