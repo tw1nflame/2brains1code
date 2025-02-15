@@ -1,0 +1,4 @@
+**/__pycache__/
+model.onnx
+model.safetensors
+/app/results/
