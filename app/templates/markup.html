@@ -9,20 +9,25 @@
 
 
 {% block content %}
-<div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Загрузка и обработка файла</h1>
+<!-- <div class="max-w-4xl mx-auto"> -->
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Загрузка и разметка файла</h1>
 
     <!-- Блок загрузки файла -->
     <!-- <div class="bg-white rounded-lg shadow-md p-6 mb-6"> -->
 
-        <form id="upload-form" class="mb-6">
-            <input type="file" id="file-input" class="hidden" accept=".csv, .xls, .xlsx">
-                <label for="file-input" class="flex-1 w-full block text-center cursor-pointer bg-blue-500 text-white px-4 py-3 rounded-lg shadow-md hover:bg-blue-600 transition">
-                    Выбрать файл
-                </label>
-            <button type="submit" class="flex-1 bg-green-500 text-white px-4 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
-                Загрузить
-            </button>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <form id="upload-form">
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <div class="flex-1">
+                    <input type="file" id="file-input" class="hidden" accept=".csv, .xls, .xlsx">
+                    <label for="file-input" class="flex-1 w-full block text-center cursor-pointer bg-blue-500 text-white px-4 py-3 rounded-lg shadow-md hover:bg-blue-600 transition">
+                        Выбрать файл
+                    </label>
+                    </div>
+                <button type="submit" class="flex-1 bg-purple-700 text-white px-4 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
+                    Загрузить
+                </button>
+            </div>
         </form>
 
         <!-- Блок кнопок классификации -->
@@ -45,7 +50,7 @@
                 Скачать
             </button>
         </div>
-    <!-- </div> -->
+    </div>
 
     <!-- Контейнер с таблицей -->
     <div id="jsonOutput" class="hidden">
@@ -66,7 +71,7 @@
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
 
 <script src="static/js/markup.js"></script>
 {% endblock %}

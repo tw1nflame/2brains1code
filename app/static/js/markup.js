@@ -85,7 +85,7 @@ class DataLabeler {
             // downloadBtn = document.createElement('button');
             // downloadBtn.className = 'download-btn mb-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600';
             // downloadBtn.textContent = 'Скачать XLSX';
-            downloadBtn.classList.remove('disabled');
+            downloadBtn.removeAttribute('disabled');
             downloadBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
             downloadBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
             
@@ -152,10 +152,19 @@ class DataLabeler {
     // }
   }
   
+document.getElementById('file-input').addEventListener('change', async function(event){
+event.preventDefault();
+const fileInputLabel = document.querySelector('label[for="file-input"]');
+const fileInput = document.getElementById('file-input');
+fileInputLabel.textContent = fileInput.files[0].name;
+});
+
 
 document.getElementById('upload-form').addEventListener('submit', async function(event) {
     event.preventDefault();
     
+    
+
     const messageContainer = document.getElementById('currentMessage');
     if (messageContainer) messageContainer.textContent = '';
 

@@ -1,3 +1,10 @@
+document.getElementById('file-input').addEventListener('change', async function(event){
+    event.preventDefault();
+    const fileInputLabel = document.querySelector('label[for="file-input"]');
+    const fileInput = document.getElementById('file-input');
+    fileInputLabel.textContent = fileInput.files[0].name;
+    });
+
 document.getElementById('upload-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
