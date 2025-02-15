@@ -207,7 +207,7 @@ document.getElementById('upload-form').addEventListener('submit', async function
     const tableBody = document.getElementById('results-body');
     tableBody.innerHTML = "";
     const labeler = new DataLabeler(
-        ['btnA', 'btnB', 'btnC'],
+        ['btnG', 'btnN', 'btnB'],
         'jsonOutput'
       );
     // processRows(result)
