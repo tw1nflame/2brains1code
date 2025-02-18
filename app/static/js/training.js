@@ -70,7 +70,6 @@ async function monitorTraining(taskId) {
         try {
             const response = await axios.get(`/training-status/${taskId}`);
             const { status, progress, eta, metrics } = response.data;
-            console.log(response.data)
 
             progressBar.value = progress * 100;
             progressText.textContent = `Прогресс: ${Math.round(progress * 100)}%`;
