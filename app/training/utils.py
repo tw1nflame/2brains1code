@@ -109,29 +109,29 @@ def training(task_id, training_manager, df, batch_size=16, n_epochs=1, test_size
 
     trainer.train()
 
-    # # Сохраняем PyTorch-модель
-    # save_path = "app/data_analyze/finetuned_rubert_tiny"
-    # model.save_pretrained(save_path)
-    # tokenizer.save_pretrained(save_path)
+    # Сохраняем PyTorch-модель
+    save_path = "app/data_analyze/finetuned_rubert_tiny"
+    model.save_pretrained(save_path)
+    tokenizer.save_pretrained(save_path)
 
-    # # Экспорт в ONNX
-    # onnx_model_path = f"{save_path}/model.onnx"
-    # dummy_text = "Пример текста для теста"
-    # inputs = tokenizer(dummy_text, return_tensors="pt", padding="max_length", truncation=True, max_length=512)
+    # Экспорт в ONNX
+    onnx_model_path = f"{save_path}/model.onnx"
+    dummy_text = "Пример текста для теста"
+    inputs = tokenizer(dummy_text, return_tensors="pt", padding="max_length", truncation=True, max_length=512)
 
-    # model.eval()  # Включаем eval-режим перед экспортом
-    # torch.onnx.export(
-    #     model,
-    #     (inputs["input_ids"], inputs["attention_mask"]), 
-    #     onnx_model_path,
-    #     input_names=["input_ids", "attention_mask"], 
-    #     output_names=["logits"],
-    #     dynamic_axes={
-    #         "input_ids": {0: "batch_size"},
-    #         "attention_mask": {0: "batch_size"},
-    #         "logits": {0: "batch_size"}
-    #     },
-    #     opset_version=14
-    # )
+    model.eval()  # Включаем eval-режим перед экспортом
+    torch.onnx.export(
+        model,
+        (inputs["input_ids"], inputs["attention_mask"]), 
+        onnx_model_path,
+        input_names=["input_ids", "attention_mask"], 
+        output_names=["logits"],
+        dynamic_axes={
+            "input_ids": {0: "batch_size"},
+            "attention_mask": {0: "batch_size"},
+            "logits": {0: "batch_size"}
+        },
+        opset_version=14
+    )
 
-    # print(f"✅ Model training complete. ONNX model saved at {onnx_model_path}")
+    print(f"✅ Model training complete. ONNX model saved at {onnx_model_path}")
