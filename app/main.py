@@ -3,10 +3,12 @@ from fastapi.staticfiles import StaticFiles
 from sentiment.routes import router as sentiment_router
 from data_analyze.routes import router as data_analyze_router
 from markup.routes import router as markup_router
+from training.routes import router as training_router
+from training.tasks import lifespan
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
-app.mount("/static", StaticFiles(directory=r"D:\Work\AI Learning lab\2brains1code\app\static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 app.include_router(
@@ -22,4 +24,9 @@ app.include_router(
 app.include_router(
     markup_router,
     tags=['markup_router']
+)
+
+app.include_router(
+    training_router,
+    tags=['training_router']
 )
